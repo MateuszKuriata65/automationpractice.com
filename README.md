@@ -1,8 +1,12 @@
-"# automationpractice.com" 
+
+# Automation Practice Project
+
 
 Tools:
 
 • Java,
+
+• Maven,
 
 • Selenium WebDriver,
 
@@ -13,3 +17,10 @@ Tested components / functionalities:
 • Login,
 
 • Create Account.
+
+
+# Author
+Mateusz Kuriata
+
+
+
