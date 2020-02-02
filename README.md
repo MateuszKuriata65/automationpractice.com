@@ -1,6 +1,7 @@
 "# automationpractice.com" 
 
 Tools:
+
 • Java,
 
 • Selenium WebDriver,
