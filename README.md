@@ -6,7 +6,7 @@ Tools:
 • TestNG.
 
 Tested components / functionalities:
-• login,
-• login form,
-• create account form,
-• create account.
+
+• Login,
+
+• Create Account.
