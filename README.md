@@ -1,5 +1,6 @@
 
 # Automation Practice Project
+This is my automation practice/learning project, if you have any suggestions/tips please write them. 
 
 
 # Tools:
