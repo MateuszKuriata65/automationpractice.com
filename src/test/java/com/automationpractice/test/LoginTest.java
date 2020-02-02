@@ -10,6 +10,7 @@ public class LoginTest extends BaseTest{
 
     @Test(priority = 1)
     public void isLoginPage(){
+        //Check is this Login Page
         HomePage homePage=new HomePage(driver);
         LoginPage loginPage=new LoginPage(driver);
         homePage.clickSignInButton();
@@ -20,6 +21,7 @@ public class LoginTest extends BaseTest{
 
     @Test(priority = 2)
     public void loginWithoutCredentialsTest(){
+        //Check chance of logging without data.
         LoginPage loginPage=new LoginPage(driver);
         loginPage.sendMailToLogin("")
                 .sendPasswordToLogin("")
@@ -29,6 +31,7 @@ public class LoginTest extends BaseTest{
 
     @Test(priority = 3)
     public void validMailSyntaxTest(){
+        // Check
         LoginPage loginPage=new LoginPage(driver);
         loginPage.sendMailToLogin("test@test.pl");
         Assert.assertTrue(loginPage.isEmailValid(),"Mail syntax is incorrect");
