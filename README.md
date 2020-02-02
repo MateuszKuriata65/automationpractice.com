@@ -2,7 +2,9 @@
 
 Tools:
 • Java,
+
 • Selenium WebDriver,
+
 • TestNG.
 
 Tested components / functionalities:
