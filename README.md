@@ -2,7 +2,7 @@
 # Automation Practice Project
 
 
-Tools:
+# Tools:
 
 • Java,
 
@@ -12,7 +12,7 @@ Tools:
 
 • TestNG.
 
-Tested components / functionalities:
+# Tested components / functionalities:
 
 • Login,
 
