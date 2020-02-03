@@ -6,7 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest{
-
+    // tests log in functionality
 
     @Test(priority = 1)
     public void isLoginPage(){
@@ -30,25 +30,27 @@ public class LoginTest extends BaseTest{
     }
 
     @Test(priority = 3)
-    public void validMailSyntaxTest(){
-        // Check
+    public void validMailSyntaxMessageTest(){
+        // Check if green background is visible when mail has good syntax
         LoginPage loginPage=new LoginPage(driver);
         loginPage.sendMailToLogin("test@test.pl");
-        Assert.assertTrue(loginPage.isEmailValid(),"Mail syntax is incorrect");
+        Assert.assertTrue(loginPage.isEmailValidGreenBackgroundVisible(),"Mail syntax is incorrect");
     }
 
     @Test(priority = 4)
-    public void invalidMailSyntaxTest(){
+    public void invalidMailSyntaxMessageTest(){
         LoginPage loginPage=new LoginPage(driver);
+        // Check if red background is visible when mail has invalid syntax
         loginPage.sendMailToLogin("test");
-        Assert.assertTrue(loginPage.isEmailInvalid(),"Mail syntax is correct");
+        Assert.assertTrue(loginPage.isEmailInvalidRedBackgroundVisible(),"Mail syntax is correct");
 
         loginPage.sendMailToLogin("test@test");
-        Assert.assertTrue(loginPage.isEmailInvalid(),"Mail syntax is correct");
+        Assert.assertTrue(loginPage.isEmailInvalidRedBackgroundVisible(),"Mail syntax is correct");
     }
 
     @Test(priority = 5)
     public void loginWithoutPasswordTest(){
+        //try log in without password
         LoginPage loginPage=new LoginPage(driver);
         loginPage.sendMailToLogin("test@test2.pl")
                 .sendPasswordToLogin("")
@@ -58,6 +60,7 @@ public class LoginTest extends BaseTest{
 
     @Test(priority = 6)
     public void loginWithoutMailTest(){
+        // try log in without email
         LoginPage loginPage=new LoginPage(driver);
         loginPage.sendMailToLogin("")
                 .sendPasswordToLogin("123456789")
@@ -67,6 +70,7 @@ public class LoginTest extends BaseTest{
 
     @Test(priority = 7)
     public void authenticationFailedTest(){
+        // try log in using nonexistent user data
         LoginPage loginPage=new LoginPage(driver);
         loginPage.sendMailToLogin("test@testt.pl")
                 .sendPasswordToLogin("123456789")
@@ -76,10 +80,12 @@ public class LoginTest extends BaseTest{
 
     @Test(priority = 7)
     public void authenticationSuccessTest(){
+        // try log in using existing user data
         LoginPage loginPage=new LoginPage(driver);
         loginPage.sendMailToLogin("mucha65@gmail.com")
                 .sendPasswordToLogin("987654321")
                 .clickLoginButton();
+        // add assert!!!
     }
 
 

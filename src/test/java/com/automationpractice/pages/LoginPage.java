@@ -75,11 +75,11 @@ public class LoginPage extends BasePage {
         return wait.until(ExpectedConditions.visibilityOf(emailRequiredMessage)).isDisplayed();
     }
 
-    public boolean isEmailValid(){
+    public boolean isEmailValidGreenBackgroundVisible(){
         return correctMailForm.isDisplayed();
     }
 
-    public boolean isEmailInvalid(){
+    public boolean isEmailInvalidRedBackgroundVisible(){
         return invalidMailForm.isDisplayed();
     }
 

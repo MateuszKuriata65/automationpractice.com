@@ -15,21 +15,22 @@ public class BaseTest {
     protected String baseURL="http://automationpractice.com/index.php";
 
 
-    @BeforeClass   //methods will be run before first test in class
+    @BeforeClass
+    //methods will be run before first test in class
     public void  setUpTest()  {
       /***  tests on local machine */
-       //open google chrome
+       //open browser
         WebDriverManager.chromedriver().setup();
-        // create new object chromedrivera
+        // create new WebDriver object
          driver= new ChromeDriver();
-         // go to site
+         // go to page
          driver.navigate().to(baseURL);
     }
 
-    @AfterClass         //methods will be run after last test in class
+    @AfterClass
+    //methods will be run after last test in class
     public  void  closeDriver(){
         driver.quit();
-
     }
 
 

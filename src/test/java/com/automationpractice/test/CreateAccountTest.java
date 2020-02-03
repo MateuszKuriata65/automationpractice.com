@@ -7,10 +7,11 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class CreateAccountTest extends BaseTest {
-
+    // test create account functionality
 
     @Test(priority = 1)
     public void isCreateAccountPageTest(){
+        // go to create account page and check if this correct page
         HomePage homePage=new HomePage(driver);
         CreateAccountPage createAccountPage =new CreateAccountPage(driver);
         homePage.clickSignInButton();
@@ -20,6 +21,7 @@ public class CreateAccountTest extends BaseTest {
 
     @Test(priority = 2)
     public  void createAccountWithoutEmailTest(){
+        //try create account without email
         CreateAccountPage createAccountPage =new CreateAccountPage(driver);
         createAccountPage.crateAccountButtonClick();
         Assert.assertTrue(createAccountPage.isDisplayedEmailErrorMessage(),"");
@@ -27,6 +29,7 @@ public class CreateAccountTest extends BaseTest {
 
     @Test(priority = 3)
     public void invalidEmailSyntaxTest(){
+        // Check if red background is visible when mail has invalid syntax
         CreateAccountPage createAccountPage =new CreateAccountPage(driver);
         createAccountPage.setEmailAddress("test")
                 .crateAccountButtonClick();
@@ -37,6 +40,7 @@ public class CreateAccountTest extends BaseTest {
 
     @Test(priority = 4)
     public void isEmailRegisteredAndValidSyntaxTest(){
+        //try create account with email already use
         CreateAccountPage createAccountPage =new CreateAccountPage(driver);
         createAccountPage.setEmailAddress("test@test.pl")
                 .crateAccountButtonClick();
@@ -46,6 +50,7 @@ public class CreateAccountTest extends BaseTest {
 
     @Test(priority = 5)
     public void validEmailTest(){
+        //check if user enter valid email, application will go to create account form
         CreateAccountPage createAccountPage=new CreateAccountPage(driver);
         createAccountPage.setEmailAddress("mateusz@testtest.pl")
                 .crateAccountButtonClick();
