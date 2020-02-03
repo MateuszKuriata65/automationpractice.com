@@ -10,11 +10,12 @@ public class MyAccountPage extends BasePage{
         super(driver);
     }
 
-    /*** WebElements       ***/
+    /*********   WebElements       *********/
+
     @FindBy (xpath = ".//a[@class='account']")
     private WebElement customerName;
 
-    /*********  Methods     *************/
+    /*********   Methods       *********/
 
     public String getCustomerAccountName(){
         return customerName.getText();

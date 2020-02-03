@@ -11,7 +11,8 @@ public class LoginPage extends BasePage {
     }
 
 
-    /*** WebElements       ***/
+    /*********   WebElements       *********/
+
     @FindBy(xpath = ".//button[@name='SubmitLogin']")
     private WebElement loginButton;
 
@@ -40,7 +41,7 @@ public class LoginPage extends BasePage {
     private WebElement authenticationFailedMessage;
 
 
-    /*********  Methods     *************/
+    /*********   Methods       *********/
 
     public LoginPage sendMailToLogin(String mail) {
         emailFieldLogin.clear();
@@ -69,7 +70,7 @@ public class LoginPage extends BasePage {
         return this;
     }
 
-    /****** Errors ********/
+    /*********   Errors       *********/
 
     public boolean isEmailRequiredMessage(){
         return wait.until(ExpectedConditions.visibilityOf(emailRequiredMessage)).isDisplayed();

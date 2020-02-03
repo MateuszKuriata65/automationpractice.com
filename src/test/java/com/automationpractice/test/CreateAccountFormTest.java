@@ -8,10 +8,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class CreateAccountFormTest extends BaseTest {
-
+        // test create account from test
 
     @Test(priority = 1)
     public void isCreateFormPageTest(){
+      // go to create account form page and check if this correct page
         HomePage homePage=new HomePage(driver);
         homePage.clickSignInButton();
 
@@ -25,17 +26,19 @@ public class CreateAccountFormTest extends BaseTest {
 
         CreateAccountFormPage createAccountFormPage = new CreateAccountFormPage(driver);
         Assert.assertTrue(createAccountFormPage.isAccountCreationFormDisplayed(),"Something went wrong.This is not create account form");
-        Assert.assertEquals(createAccountFormPage.getEmail(),"janusz@test.pl","Something went wrong. Email is not the same.");
+        Assert.assertEquals(createAccountFormPage.getEmail(),"janusz@test.pl","Something went wrong. Email is not the same as create account email.");
     }
 
     @Test(priority = 2)
     public void formWithoutCredentialsTest(){
+        //try create account without required data
         CreateAccountFormPage createAccountFormPage=new CreateAccountFormPage(driver);
         createAccountFormPage.clickRegister();
         Assert.assertTrue(createAccountFormPage.isRequiredCredentialsMessageDisplayed(),"Something went wrong.Check the form maybe some field are filled. ");
     }
     @Test(priority = 3)
     public void msMrsRadioButtonTest(){
+        // check action radio button
         CreateAccountFormPage createAccountFormPage=new CreateAccountFormPage(driver);
         // Mr. radiobutton Test
         Assert.assertFalse(createAccountFormPage.isSelectedMrRadioButton());
@@ -52,16 +55,18 @@ public class CreateAccountFormTest extends BaseTest {
 
     @Test(priority = 4)
     public void passwordFiveCharacterTest(){
+        // Check if red background is visible when password has less than 5 digits
         CreateAccountFormPage createAccountFormPage=new CreateAccountFormPage(driver);
         createAccountFormPage.setPassword("1234");
         Assert.assertTrue(createAccountFormPage.isPasswordInvalidRedShadow());
-
+        // Check if green background is visible when password is equal 5 digits or more
         createAccountFormPage.setPassword("12345");
         Assert.assertTrue(createAccountFormPage.isPasswordValidGreenShadow());
     }
 
     @Test(priority = 5)
     public void verifyMonthsInDateOfBirthTest(){
+        //check if list of months in the page is equal with real months
         CreateAccountFormPage createAccountFormPage=new CreateAccountFormPage(driver);
         List<String> month= Arrays.asList("-","January ","February ","March ","April ","May ","June ","July ","August ","September ","October ",
                 "November ","December ");
@@ -70,6 +75,7 @@ public class CreateAccountFormTest extends BaseTest {
 
     @Test(priority = 6)
     public void createAccountSuccessfullyTest(){
+        // try create account with valid data
         CreateAccountFormPage createAccountFormPage=new CreateAccountFormPage(driver);
         createAccountFormPage.clickMrRadioButton()
                 .setCustomerFirstName("Janusz1")

@@ -15,7 +15,7 @@ public class CreateAccountFormPage extends BasePage {
         super(driver);
     }
 
-    /*** WebElements       ***/
+    /*********   WebElements       *********/
     @FindBy(xpath = ".//form[@id='account-creation_form']")
     private WebElement accountCreationForm;
 
@@ -85,7 +85,7 @@ public class CreateAccountFormPage extends BasePage {
     @FindBy (xpath = ".//div[@class='required password form-group form-error']")
     private WebElement invalidPasswordRedShadow;
 
-    /*********  Methods     *************/
+    /*********   Methods       *********/
 
     public boolean isAccountCreationFormDisplayed(){
         return wait.until(ExpectedConditions.visibilityOf(accountCreationForm)).isDisplayed();
@@ -212,7 +212,7 @@ public class CreateAccountFormPage extends BasePage {
 
 
 
-    /****** Errors ********/
+    /*********   Errors       *********/
     public boolean isRequiredCredentialsMessageDisplayed(){
         return wait.until(ExpectedConditions.visibilityOf(requiredCredentialsMessage)).isDisplayed();
     }

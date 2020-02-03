@@ -7,10 +7,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
-import java.net.MalformedURLException;
 
 public class BaseTest {
-
+    //class with methods which can use in every test class
     protected WebDriver driver;
     protected String baseURL="http://automationpractice.com/index.php";
 
