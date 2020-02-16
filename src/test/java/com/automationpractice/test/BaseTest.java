@@ -1,6 +1,7 @@
 package com.automationpractice.test;
 
 
+import com.automationpractice.utils.ConfigurationReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -11,19 +12,22 @@ import org.testng.annotations.BeforeClass;
 public class BaseTest {
     //class with methods which can use in every test class
     protected WebDriver driver;
-    protected String baseURL="http://automationpractice.com/index.php";
+    protected ConfigurationReader configurationReader;
+
+    private String configurationFileLocation="src/test/java/Configuration.properties";
 
 
     @BeforeClass
     //methods will be run before first test in class
     public void  setUpTest()  {
+        configurationReader=new ConfigurationReader(configurationFileLocation);
       /***  tests on local machine */
        //open browser
         WebDriverManager.chromedriver().setup();
         // create new WebDriver object
          driver= new ChromeDriver();
          // go to page
-         driver.navigate().to(baseURL);
+         driver.navigate().to(configurationReader.getBaseURL());
     }
 
     @AfterClass

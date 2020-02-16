@@ -1,9 +1,7 @@
 package com.automationpractice.utils;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.sql.SQLOutput;
 import java.util.Properties;
 
 public abstract class  ReadFile {
@@ -14,8 +12,6 @@ public abstract class  ReadFile {
         loadData();
     }
 
-
-
     public void loadFile (String fileLocation) {
          properties = new Properties();
         try {
@@ -25,7 +21,6 @@ public abstract class  ReadFile {
             System.out.println("Something went wrong. Can't find the file. Check location:" + fileLocation);
         }
     }
-
 
     abstract void loadData();
 }
