@@ -31,7 +31,7 @@ public class CreateAccountTest extends BaseTest {
     public void invalidEmailSyntaxTest(){
         // Check if red background is visible when mail has invalid syntax
         CreateAccountPage createAccountPage =new CreateAccountPage(driver);
-        createAccountPage.setEmailAddress("test")
+        createAccountPage.setEmailAddress(testDataReader.getCreateAccountData().getInvalidMailSyntax())
                 .crateAccountButtonClick();
         Assert.assertTrue(createAccountPage.isEmailInvalid());
         Assert.assertTrue(createAccountPage.isDisplayedEmailErrorMessage());
@@ -42,7 +42,7 @@ public class CreateAccountTest extends BaseTest {
     public void isEmailRegisteredAndValidSyntaxTest(){
         //try create account with email already use
         CreateAccountPage createAccountPage =new CreateAccountPage(driver);
-        createAccountPage.setEmailAddress("test@test.pl")
+        createAccountPage.setEmailAddress(testDataReader.getCreateAccountData().getUsedEmail())
                 .crateAccountButtonClick();
         Assert.assertTrue(createAccountPage.isDisplayedEmailRegisteredMessage(),"Something went wrong. Maybe email is registered");
         Assert.assertTrue(createAccountPage.isEmailValid());
@@ -52,7 +52,7 @@ public class CreateAccountTest extends BaseTest {
     public void validEmailTest(){
         //check if user enter valid email, application will go to create account form
         CreateAccountPage createAccountPage=new CreateAccountPage(driver);
-        createAccountPage.setEmailAddress("mateusz@testtest.pl")
+        createAccountPage.setEmailAddress(testDataReader.getCreateAccountData().getNewMail())
                 .crateAccountButtonClick();
 
         CreateAccountFormPage createAccountFormPage = new CreateAccountFormPage(driver);

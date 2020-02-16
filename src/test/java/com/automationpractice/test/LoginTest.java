@@ -33,7 +33,7 @@ public class LoginTest extends BaseTest{
     public void validMailSyntaxMessageTest(){
         // Check if green background is visible when mail has good syntax
         LoginPage loginPage=new LoginPage(driver);
-        loginPage.sendMailToLogin("test@test.pl");
+        loginPage.sendMailToLogin(testDataReader.getLoginData().getValidLoginSyntax());
         Assert.assertTrue(loginPage.isEmailValidGreenBackgroundVisible(),"Mail syntax is incorrect");
     }
 
@@ -41,10 +41,10 @@ public class LoginTest extends BaseTest{
     public void invalidMailSyntaxMessageTest(){
         LoginPage loginPage=new LoginPage(driver);
         // Check if red background is visible when mail has invalid syntax
-        loginPage.sendMailToLogin("test");
+        loginPage.sendMailToLogin(testDataReader.getLoginData().getInvalidLoginSyntaxWithoutEta());
         Assert.assertTrue(loginPage.isEmailInvalidRedBackgroundVisible(),"Mail syntax is correct");
 
-        loginPage.sendMailToLogin("test@test");
+        loginPage.sendMailToLogin(testDataReader.getLoginData().getInvalidLoginSyntaxWithEta());
         Assert.assertTrue(loginPage.isEmailInvalidRedBackgroundVisible(),"Mail syntax is correct");
     }
 
@@ -52,7 +52,7 @@ public class LoginTest extends BaseTest{
     public void loginWithoutPasswordTest(){
         //try log in without password
         LoginPage loginPage=new LoginPage(driver);
-        loginPage.sendMailToLogin("test@test2.pl")
+        loginPage.sendMailToLogin(testDataReader.getLoginData().getValidLoginSyntax())
                 .sendPasswordToLogin("")
                 .clickLoginButton();
         Assert.assertTrue(loginPage.isPasswordRequiredMessageDisplayed());
@@ -63,7 +63,7 @@ public class LoginTest extends BaseTest{
         // try log in without email
         LoginPage loginPage=new LoginPage(driver);
         loginPage.sendMailToLogin("")
-                .sendPasswordToLogin("123456789")
+                .sendPasswordToLogin(testDataReader.getLoginData().getPassword())
                 .clickLoginButton();
         Assert.assertTrue(loginPage.isEmailRequiredMessage());
     }
@@ -72,8 +72,8 @@ public class LoginTest extends BaseTest{
     public void authenticationFailedTest(){
         // try log in using nonexistent user data
         LoginPage loginPage=new LoginPage(driver);
-        loginPage.sendMailToLogin("test@testt.pl")
-                .sendPasswordToLogin("123456789")
+        loginPage.sendMailToLogin(testDataReader.getLoginData().getValidLoginSyntax())
+                .sendPasswordToLogin(testDataReader.getLoginData().getPassword())
                 .clickLoginButton();
         Assert.assertTrue(loginPage.isAuthenticationFailedMessageDisplayed());
     }
@@ -82,8 +82,8 @@ public class LoginTest extends BaseTest{
     public void authenticationSuccessTest(){
         // try log in using existing user data
         LoginPage loginPage=new LoginPage(driver);
-        loginPage.sendMailToLogin("mucha65@gmail.com")
-                .sendPasswordToLogin("987654321")
+        loginPage.sendMailToLogin(testDataReader.getLoginData().getMailToLogin())
+                .sendPasswordToLogin(testDataReader.getLoginData().getPassword())
                 .clickLoginButton();
         // add assert!!!
     }
